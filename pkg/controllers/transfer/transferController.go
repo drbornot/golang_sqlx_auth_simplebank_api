@@ -3,9 +3,10 @@ package controller
 import (
 	"context"
 	"database/sql"
-	"log"
+	accountController "simplebank/pkg/controllers/account"
 	entryController "simplebank/pkg/controllers/entry"
 	"simplebank/pkg/models"
+	"sync"
 
 	"github.com/pkg/errors"
 
@@ -27,6 +28,8 @@ type (
 		EntryTo     *models.Entry
 	}
 )
+
+var mutex sync.Mutex
 
 func execTx(ctx context.Context, db *sqlx.DB, fn func() error) error {
 	tx, err := db.BeginTx(ctx, nil)
@@ -72,7 +75,33 @@ func TransferTx(ctx context.Context, db *sqlx.DB, args TransferTxParams) (*Trans
 			return err
 		}
 
-		// TODO: Update account's balance
+		// Get account & Update account's balance
+		mutex.Lock()
+		account1, err := accountController.GetAccountByIDForUpdate(context.Background(), db, args.FromAccountID)
+		if err != nil {
+			return err
+		}
+		result.FromAccount, err = accountController.UpdateAccount(context.Background(), db, accountController.UpdateAccountParams{
+			Id:      args.FromAccountID,
+			Balance: account1.Balance - args.Amount,
+		})
+		if err != nil {
+			return err
+		}
+
+		account2, err := accountController.GetAccountByIDForUpdate(context.Background(), db, args.ToAccountID)
+		if err != nil {
+			return err
+		}
+		result.ToAccount, err = accountController.UpdateAccount(context.Background(), db, accountController.UpdateAccountParams{
+			Id:      args.ToAccountID,
+			Balance: account2.Balance + args.Amount,
+		})
+		if err != nil {
+			return err
+		}
+		mutex.Unlock()
+
 		return nil
 	})
 	if err != nil {
@@ -102,12 +131,12 @@ func CreateTransfer(ctx context.Context, db *sqlx.DB, args TransferTxParams) (*m
 		}
 	}
 
-	log.Println("Transfer Created")
+	// log.Println("Transfer created")
 	return &transfer, nil
 }
 
 func GetTransferByID(ctx context.Context, db *sqlx.DB, id int64) (*models.Transfer, error) {
-	query := `SELECT * FROM transfers WHERE id = $1 LIMIT 1 FOR UPDATE`
+	query := `SELECT * FROM transfers WHERE id = $1 LIMIT 1`
 
 	var res models.Transfer
 	row, err := db.QueryContext(ctx, query, id)
@@ -118,6 +147,7 @@ func GetTransferByID(ctx context.Context, db *sqlx.DB, id int64) (*models.Transf
 		return &res, errors.Wrap(err, "failed retrieving the row")
 	}
 
+	defer row.Close()
 	for row.Next() {
 		err := row.Scan(&res.Id, &res.FromAccountID, &res.ToAccountID, &res.Amount, &res.CreatedAt)
 		if err != nil {

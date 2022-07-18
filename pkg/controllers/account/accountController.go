@@ -35,6 +35,7 @@ func CreateAccount(ctx context.Context, db *sqlx.DB, account models.Account) (*m
 		return &res, errors.Wrap(err, "failed insert")
 	}
 
+	defer row.Close()
 	for row.Next() {
 		err := row.Scan(&res.Id, &res.Owner, &res.Balance, &res.Currency, &res.CreatedAt)
 		if err != nil {
@@ -42,12 +43,35 @@ func CreateAccount(ctx context.Context, db *sqlx.DB, account models.Account) (*m
 		}
 	}
 
-	log.Println("Account created")
+	// log.Println("Account created")
 	return &res, nil
 }
 
 func GetAccountByID(ctx context.Context, db *sqlx.DB, id int64) (*models.Account, error) {
-	query := `SELECT * FROM accounts WHERE id = $1 LIMIT 1 FOR UPDATE`
+	query := `SELECT * FROM accounts WHERE id = $1 LIMIT 1`
+
+	var res models.Account
+	row, err := db.QueryContext(ctx, query, id)
+	if err == sql.ErrNoRows {
+		return &res, nil
+	}
+	if err != nil {
+		return &res, errors.Wrap(err, "failed retrieving the row")
+	}
+
+	defer row.Close()
+	for row.Next() {
+		err := row.Scan(&res.Id, &res.Owner, &res.Balance, &res.Currency, &res.CreatedAt)
+		if err != nil {
+			return &res, errors.Wrap(err, "failed row scan")
+		}
+	}
+
+	return &res, nil
+}
+
+func GetAccountByIDForUpdate(ctx context.Context, db *sqlx.DB, id int64) (*models.Account, error) {
+	query := `SELECT * FROM accounts WHERE id = $1 LIMIT 1 FOR UPDATE;`
 
 	var res models.Account
 	row, err := db.QueryContext(ctx, query, id)
@@ -115,7 +139,7 @@ func UpdateAccount(ctx context.Context, db *sqlx.DB, arg UpdateAccountParams) (*
 		}
 	}
 
-	log.Println("Account Updated")
+	// log.Println("Account Updated")
 	return &res, nil
 }
 

@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"context"
+	accountController "simplebank/pkg/controllers/account"
 	entryController "simplebank/pkg/controllers/entry"
 	transferController "simplebank/pkg/controllers/transfer"
 	"testing"
@@ -79,6 +80,26 @@ func TestTransferTx(t *testing.T) {
 		require.NotEmpty(t, entryTo1)
 		require.Equal(t, entryTo.Id, entryTo1.Id)
 
-		// TODO: check account's balance
+		// check accounts
+		fromAccount := result.FromAccount
+		require.NotEmpty(t, fromAccount)
+		require.Equal(t, account1.Id, fromAccount.Id)
+
+		toAccount := result.ToAccount
+		require.NotEmpty(t, toAccount)
+		require.Equal(t, account2.Id, toAccount.Id)
+
+		// check account's balance
+		diff1 := account1.Balance - fromAccount.Balance
+		diff2 := toAccount.Balance - account2.Balance
+		require.Equal(t, diff1, diff2)
 	}
+
+	updatedAccount1, err := accountController.GetAccountByID(context.Background(), DB, account1.Id)
+	require.NoError(t, err)
+	require.Equal(t, account1.Balance-int64(n)*amount, updatedAccount1.Balance)
+
+	updatedAccount2, err := accountController.GetAccountByID(context.Background(), DB, account2.Id)
+	require.NoError(t, err)
+	require.Equal(t, account2.Balance+int64(n)*amount, updatedAccount2.Balance)
 }

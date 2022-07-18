@@ -48,12 +48,12 @@ func CreateEntry(ctx context.Context, db *sqlx.DB, entry CreateEntryParams) (*mo
 		}
 	}
 
-	log.Println("Entry created")
+	// log.Println("Entry created")
 	return &res, nil
 }
 
 func GetEntryByID(ctx context.Context, db *sqlx.DB, id int64) (*models.Entry, error) {
-	query := `SELECT * FROM entries WHERE id = $1 LIMIT 1 FOR UPDATE`
+	query := `SELECT * FROM entries WHERE id = $1 LIMIT 1`
 
 	var res models.Entry
 	row, err := db.QueryContext(ctx, query, id)
