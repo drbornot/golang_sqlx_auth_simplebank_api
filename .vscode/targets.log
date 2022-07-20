@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 17 20:37:18 2022
+# Make data base, printed on Tue Jul 19 21:07:17 2022
 
 # Variables
 
@@ -21,9 +21,7 @@ USERPROFILE = C:\Users\Administrator
 # environment
 LOCALAPPDATA = C:\Users\Administrator\AppData\Local
 # environment
-WSLENV = WT_SESSION::WT_PROFILE_ID
-# environment
-VSCODE_CWD = C:\Users\Administrator\Documents\Node Projects\node_mongo_express_jwt_api
+VSCODE_CWD = C:\Users\Administrator\go\src\github.com\prospero\simplebank
 # environment
 CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
 # environment
@@ -31,7 +29,7 @@ SYSTEMROOT = C:\Windows
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-PSMODULEPATH = C:\Users\Administrator\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # environment
@@ -39,7 +37,7 @@ GOPATH = C:\Users\Administrator\go
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1384_VFXENGZFRWMTKONM
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19908_KQOUPDLHAMJSZLFI
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -51,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\Administrator\AppData\Roaming\Code\CachedData\b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = C:\Users\Administrator\AppData\Roaming\Code\CachedData\3b889b090b5ad5793f524b5d1d39fda662b96a2a
 # environment
 LANG = C
 # default
@@ -69,7 +67,7 @@ ONEDRIVE = C:\Users\Administrator\OneDrive
 # makefile
 CURDIR := c:/Users/Administrator/go/src/github.com/prospero/simplebank
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
@@ -87,11 +85,9 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1384
+VSCODE_PID = 19908
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
-# environment
-WT_PROFILE_ID = {61c54bbd-c2c6-5271-96e7-009a87ff44bf}
 # automatic
 *F = $(notdir $*)
 # automatic
@@ -121,7 +117,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\nodejs\;C:\php8;C:\composer;C:\Program Files\WireGuard\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Go\bin;C:\Users\Administrator\scoop\shims;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\go\bin
+PATH = C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files\nodejs\;C:\php8;C:\composer;C:\Program Files\WireGuard\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files (x86)\Gpg4win\..\GnuPG\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\Go\bin;C:\Users\Administrator\scoop\shims;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Users\Administrator\AppData\Roaming\npm;;C:\Users\Administrator\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Administrator\go\bin
 # environment
 ZES_ENABLE_SYSMAN = 1
 # environment
@@ -135,8 +131,6 @@ PROMPT = $P$G
 # environment
 CHOCOLATEYLASTPATHUPDATE = 133019665290669360
 # environment
-WT_SESSION = 6b9b5029-b83b-47bf-9197-939ad9d27a00
-# environment
 LOGONSERVER = \\DESKTOP-M8A1PP1
 # environment
 USERNAME = Administrator
@@ -147,7 +141,7 @@ COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # environment
 PROGRAMW6432 = C:\Program Files
 # environment
-PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 # automatic
 +F = $(notdir $+)
 # environment
@@ -158,6 +152,8 @@ USERDOMAIN = DESKTOP-M8A1PP1
 GNUMAKEFLAGS := 
 # environment
 OS = Windows_NT
+# environment
+__COMPAT_LAYER = DetectorsAppHealth
 # makefile
 .DEFAULT_GOAL := postgres
 # default
@@ -187,7 +183,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\ADMINI~1\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\9e7283c68e6159fd1e9872b65f264be5-1.69.1-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\9e7283c68e6159fd1e9872b65f264be5-1.69.2-main-sock
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # default
@@ -199,9 +195,7 @@ SUFFIXES :=
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
-VSCODE_CLI = 1
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
+SESSIONNAME = Console
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
@@ -209,7 +203,7 @@ PROCESSOR_REVISION = 7e05
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 126 Stepping 5, GenuineIntel
 # variable set hash-table stats:
-# Load=98/1024=10%, Rehash=0, Collisions=8/124=6%
+# Load=95/1024=9%, Rehash=0, Collisions=8/121=7%
 
 # Pattern-specific Variable Values
 
@@ -232,14 +226,13 @@ migratedown:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 14):
-	migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose  
-down
+#  recipe to execute (from 'Makefile', line 20):
+	migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose down
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-15 21:05:08
+#  Last modified 2022-07-17 20:44:06
 #  File has been updated.
 #  Successfully updated.
 
@@ -248,7 +241,7 @@ dropdb:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 8):
+#  recipe to execute (from 'Makefile', line 14):
 	docker exec -it postgres14 dropdb simple_bank
 
 migrateup:
@@ -256,7 +249,7 @@ migrateup:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 11):
+#  recipe to execute (from 'Makefile', line 17):
 	migrate -path db/migrations -database "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
 # Not a target:
@@ -273,13 +266,20 @@ all:
 #  File has not been updated.
 
 test:
-#  Phony target (pr 
-erequisite of .PHONY).
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 17):
+#  recipe to execute (from 'Makefile', line 23):
 	go test -v -cover ./...
+
+postgresup:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 5):
+	docker start postgres14
 
 postgres:
 #  Phony target (prerequisite of .PHONY).
@@ -294,28 +294,36 @@ createdb:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 5):
+#  recipe to execute (from 'Makefile', line 11):
 	docker exec -it postgres14 createdb --username=root --owner=root simple_bank
 
-.PHONY: postgres createdb dropdb migrateup migratedown test
+.PHONY: postgres postgresup postgresdown createdb dropdb migrateup migratedown test
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
+postgresdown:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 8):
+	docker stop postgres14
+
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=13/1024=1%, Rehash=0, Collisions=0/31=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 23 / storage = 167 B / avg = 7 B
-# current buf: size = 8174 B / used = 167 B / count = 23 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 25 / storage = 191 B / avg = 7 B
+# current buf: size = 8174 B / used = 191 B / count = 25 / avg = 7 B
 
-# strcache performance: lookups = 40 / hit rate = 42%
+# strcache performance: lookups = 46 / hit rate = 45%
 # hash-table stats:
-# Load=23/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Sun Jul 17 20:37:18 2022
+# Load=25/8192=0%, Rehash=0, Collisions=0/46=0%
+# Finished Make data base on Tue Jul 19 21:07:17 2022
 
  
