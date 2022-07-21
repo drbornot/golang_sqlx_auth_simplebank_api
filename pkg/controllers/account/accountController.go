@@ -17,13 +17,19 @@ type (
 		Offset int32 `db:"offset" json:"offset"`
 	}
 
+	CreateAccountParams struct {
+		Owner    string `db:"owner" json:"owner"`
+		Currency string `db:"currency" json:"currency"`
+		Balance  int64  `db:"balance" json:"balance"`
+	}
+
 	UpdateAccountParams struct {
 		Id      int64 `db:"id" json:"id"`
 		Balance int64 `db:"balance" json:"balance"`
 	}
 )
 
-func CreateAccount(ctx context.Context, db *sqlx.DB, account models.Account) (*models.Account, error) {
+func CreateAccount(ctx context.Context, db *sqlx.DB, account CreateAccountParams) (*models.Account, error) {
 	query := `INSERT INTO accounts ("owner", "currency", "balance") VALUES ($1, $2, $3) RETURNING *`
 
 	var res models.Account
@@ -51,20 +57,12 @@ func GetAccountByID(ctx context.Context, db *sqlx.DB, id int64) (*models.Account
 	query := `SELECT * FROM accounts WHERE id = $1 LIMIT 1`
 
 	var res models.Account
-	row, err := db.QueryContext(ctx, query, id)
+	err := db.QueryRowContext(ctx, query, id).Scan(&res.Id, &res.Owner, &res.Balance, &res.Currency, &res.CreatedAt)
 	if err == sql.ErrNoRows {
-		return &res, nil
+		return &res, errors.Wrap(err, "row not found")
 	}
 	if err != nil {
 		return &res, errors.Wrap(err, "failed retrieving the row")
-	}
-
-	defer row.Close()
-	for row.Next() {
-		err := row.Scan(&res.Id, &res.Owner, &res.Balance, &res.Currency, &res.CreatedAt)
-		if err != nil {
-			return &res, errors.Wrap(err, "failed row scan")
-		}
 	}
 
 	return &res, nil

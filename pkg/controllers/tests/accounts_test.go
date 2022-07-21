@@ -12,7 +12,7 @@ import (
 )
 
 func createRandomAccount(t *testing.T) *models.Account {
-	account := models.Account{
+	account := accountController.CreateAccountParams{
 		Owner:    util.RandomOwner(),
 		Currency: util.RandomCurrency(),
 		Balance:  util.RandomMoney(),
